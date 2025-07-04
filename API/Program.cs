@@ -1,5 +1,6 @@
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Application;
 
 namespace API
 {
@@ -15,6 +16,8 @@ namespace API
                 options.UseSqlServer(connectionString));
 
             // Add services to the container.
+            //Add Application servicesAdd commentMore actions
+            builder.Services.AddApplicationServices(builder.Configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
