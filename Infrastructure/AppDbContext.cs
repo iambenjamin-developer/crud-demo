@@ -25,6 +25,9 @@ namespace Infrastructure
                 entity.Property(p => p.Id)
                       .ValueGeneratedOnAdd();
 
+                entity.HasIndex(p => p.SKU)
+                      .IsUnique();
+
                 entity.Property(p => p.SKU)
                       .IsRequired()
                       .HasMaxLength(50);
