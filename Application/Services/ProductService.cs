@@ -50,6 +50,11 @@ namespace Application.Services
             if (createDto.Stock < 0)
                 throw new ArgumentException("El stock no puede ser negativo.");
 
+            // Validar existencia de la categoría
+            bool categoryExists = await _context.Categories.AnyAsync(c => c.Id == createDto.CategoryId);
+            if (!categoryExists)
+                throw new InvalidOperationException($"La categoría con Id '{createDto.CategoryId}' no existe.");
+
             // Validar unicidad de SKU
             bool skuExists = await _context.Products.AnyAsync(p => p.SKU == createDto.SKU);
             if (skuExists)
@@ -81,6 +86,11 @@ namespace Application.Services
                 throw new ArgumentException("El precio no puede ser negativo.");
             if (updateDto.Stock < 0)
                 throw new ArgumentException("El stock no puede ser negativo.");
+
+            // Validar existencia de la categoría
+            bool categoryExists = await _context.Categories.AnyAsync(c => c.Id == updateDto.CategoryId);
+            if (!categoryExists)
+                throw new InvalidOperationException($"La categoría con Id '{updateDto.CategoryId}' no existe.");
 
             // Validar unicidad de SKU (excepto para el propio producto)
             bool skuExists = await _context.Products.AnyAsync(p => p.SKU == updateDto.SKU && p.Id != id);
