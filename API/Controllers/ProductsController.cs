@@ -39,21 +39,42 @@ namespace API.Controllers
         [HttpPost]
         public async Task<ActionResult<ProductDto>> Create([FromBody] CreateProductDto dto)
         {
-            var newProductDto = await _productService.CreateAsync(dto);
+            try
+            {
+                var newProductDto = await _productService.CreateAsync(dto);
 
-            return CreatedAtAction(nameof(GetById), new { id = newProductDto.Id }, newProductDto);
+                return CreatedAtAction(nameof(GetById), new { id = newProductDto.Id }, newProductDto);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
         [HttpPut("{id:long}")]
         public async Task<IActionResult> Update(long id, [FromBody] UpdateProductDto dto)
         {
-            bool isUpdated = await _productService.UpdateAsync(id, dto);
-            if (!isUpdated)
-                return NotFound($"Producto con Id: {id} no encontrado");
+            try
+            {
+                bool isUpdated = await _productService.UpdateAsync(id, dto);
+                if (!isUpdated)
+                    return NotFound($"Producto con Id: {id} no encontrado");
 
-            return NoContent();
-
+                return NoContent();
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
 
