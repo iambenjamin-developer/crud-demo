@@ -19,7 +19,7 @@ namespace API.Controllers
         /// Obtiene la lista de todas las categorías disponibles.
         /// </summary>
         /// <remarks>
-        /// Este endpoint devuelve todas las categorías registradas en el sistema.
+        /// Devuelve todas las categorías registradas en el sistema.
         /// </remarks>
         /// <response code="200">Lista de categorías obtenida correctamente.</response>
         /// <response code="500">Error inesperado en el servidor.</response>
