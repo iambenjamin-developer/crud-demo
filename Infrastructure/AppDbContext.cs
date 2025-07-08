@@ -59,6 +59,9 @@ namespace Infrastructure
                 entity.Property(c => c.Id)
                       .ValueGeneratedOnAdd();
 
+                entity.HasIndex(p => p.Name)
+                      .IsUnique();
+
                 entity.Property(c => c.Name)
                       .IsRequired()
                       .HasMaxLength(100);

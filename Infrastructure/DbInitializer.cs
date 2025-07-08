@@ -19,6 +19,8 @@ namespace Infrastructure
                     new Category { Name = "Limpieza", IsActive = true , CreatedAt = DateTime.UtcNow },
                     new Category { Name = "Higiene personal", IsActive = true , CreatedAt = DateTime.UtcNow },
                     new Category { Name = "Congelados", IsActive = true , CreatedAt = DateTime.UtcNow },
+                    new Category { Name = "Error", IsActive = true , CreatedAt = DateTime.UtcNow },
+
                 };
 
                 context.Categories.AddRange(categories);
