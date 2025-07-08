@@ -11,7 +11,7 @@ namespace API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add PostgreSQL DbContext
-            var connectionString = builder.Configuration.GetConnectionString("AzureConnection");
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
