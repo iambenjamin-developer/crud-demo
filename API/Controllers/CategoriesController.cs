@@ -35,7 +35,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"💥 Error inesperado al obtener categorías: {ex.Message}");
+                return StatusCode(500, $"Error inesperado al obtener categorías: {ex.Message}");
             }
         }
     }
