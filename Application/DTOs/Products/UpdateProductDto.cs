@@ -38,7 +38,6 @@ namespace Application.DTOs.Products
         public double Rating { get; set; } = 0;
 
         /// <summary>URL de la imagen principal.</summary>
-        [Url(ErrorMessage = "La URL de la imagen no es válida.")]
         public string? ImageUrl { get; set; }
 
         /// <summary>Id de la categoría.</summary>

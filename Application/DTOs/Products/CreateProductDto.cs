@@ -47,7 +47,6 @@ namespace Application.DTOs.Products
         /// <summary>
         /// URL de la imagen principal.
         /// </summary>
-        [Url(ErrorMessage = "La URL de la imagen no es válida.")]
         public string? ImageUrl { get; set; }
 
         /// <summary>
