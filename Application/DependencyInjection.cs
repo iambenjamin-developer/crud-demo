@@ -17,6 +17,9 @@ namespace Application
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICategoryService, CategoryService>();
 
+            //Add Azure Storage
+            services.AddSingleton<IStorageService, AzureBlobStorageService>();
+
             return services;
         }
     }
